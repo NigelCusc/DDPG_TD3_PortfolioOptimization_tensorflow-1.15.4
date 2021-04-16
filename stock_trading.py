@@ -600,17 +600,11 @@ def test_portfolio_selection_multiple(env, models):
 
 def test_with_given_weights(env, weights_array):
     '''
+    Iterate through testing phase with the given weights to generate the portfolio.
     
-    Parameters
-    ----------
-    env : TYPE
-        DESCRIPTION.
-    weights : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    None.
+    Args:
+    env : Portfolio environment
+    weights : Array of daily portfolio weights
 
     '''
 
@@ -879,12 +873,23 @@ if __name__ == '__main__':
     print("Full Stock History Date Range: {} -> {}".format(date_list[0], date_list[-1]))
         
     # Training/Testing Date Range
-    full_length = len(date_list)
-    train_test_ratio = 6/7
-    train_start_date = date_list[window_length]
-    train_end_date = date_list[(int)(full_length * train_test_ratio)-1]
-    test_start_date = date_list[(int)(full_length * train_test_ratio)]
-    test_end_date = date_list[full_length-2]
+    if dataset_name == 'Hegde':
+        full_length = len(date_list)
+        train_ratio = 7/10
+        validation_ratio = 2/10
+        train_start_date = date_list[window_length]
+        train_end_date = date_list[(int)(full_length * train_ratio) - 1]
+        #validation_start_date = date_list[(int)(full_length * train_ratio)]
+        #validation_end_date = date_list[(int)(full_length * (train_ratio + validation_ratio)) - 1]
+        test_start_date = date_list[(int)(full_length * (train_ratio + validation_ratio))]
+        test_end_date = date_list[full_length - 2]
+    else:
+        full_length = len(date_list)
+        train_test_ratio = 6/7
+        train_start_date = date_list[window_length]
+        train_end_date = date_list[(int)(full_length * train_test_ratio)-1]
+        test_start_date = date_list[(int)(full_length * train_test_ratio)]
+        test_end_date = date_list[full_length-2]
     print("Training Date Range: {} -> {} ({} Steps)".format(train_start_date, train_end_date, 
                                                         (int)(date_list.index(train_end_date) - date_list.index(train_start_date))))
     print("Testing Date Range: {} -> {} ({} Steps)".format(test_start_date, test_end_date, 
@@ -961,9 +966,9 @@ if __name__ == '__main__':
     else:
         state_dim = [nb_classes, window_length]
         
-    batch_size = 64
+    batch_size = config['batch size']
+    tau = config['tau']
     action_bound = 1.
-    tau = 1e-3
     
     actor_noise = OrnsteinUhlenbeckActionNoise(mu=np.zeros(action_dim))
     model_save_path = get_model_path(dataset_name, framework, window_length, predictor_type, use_batch_norm, technical_indicators_flag)

@@ -1,7 +1,7 @@
 {
   "dataset": "SP500",
   "episode": 400,
-  "value_function_threshold": 1,
+  "value_function_threshold": 2,
   "max step": 1000,
   "buffer size": 100000,
   "batch size": 64,

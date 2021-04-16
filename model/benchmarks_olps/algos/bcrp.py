@@ -18,13 +18,15 @@ class BCRP(CRP):
 
     def weights(self, env):
         X = env.close_df_subset     
+        
+        print(tools.freq(X.index))
 
         """ Find weights which maximize return on X in hindsight! """
         # update frequency
         self.opt_weights_kwargs['freq'] = tools.freq(X.index)
 
-        self.b = tools.opt_weights(X, **self.opt_weights_kwargs)
-
+        self.b = tools.opt_weights(X, **self.opt_weights_kwargs)      
+        
         return super(BCRP, self).weights(X)
 
 
