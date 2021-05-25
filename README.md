@@ -1,16 +1,16 @@
 
 
 
-# Using Reinforcement Learning for Portfolio Optimization
-
-# 
-
+# Deep Reinforcement Learning for Financial Portfolio Optimisation
 ## Algorithms used in this work
 * Long short term memory
-* Deep Deterministic Policy Gradient
+* Deep Deterministic Policy Gradient (DDPG
+* Twin Delayed Deep Deterministic Policy Gradient (TD3)
 
-## Dataset
-* S&P500 dataset from kaggle found [here](https://www.kaggle.com/camnugent/sandp500)
+## Datasets
+Datasets are in H5 format.
+* NYSE(N) dataset, which may be found here found [here](http://www.mysmu.edu.sg/faculty/chhoi/olps/datasets/NYSE_N_2_Dataset.html)
+* S&P500 custom dataset with real stock data gathered using Yahoo Finance.
 
 ## References
 * [A Deep Reinforcement Learning Framework for the Financial Portfolio Management Problem](https://arxiv.org/abs/1706.10059)
