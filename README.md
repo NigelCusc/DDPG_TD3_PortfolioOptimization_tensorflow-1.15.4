@@ -1,4 +1,6 @@
-# Deep Reinforcement Learning for Financial Portfolio Optimisation
+# Deep Reinforcement Learning for Financial Portfolio Optimisation 
+[paper](https://www.um.edu.mt/library/oar/bitstream/123456789/91919/1/21MAIPT024.pdf)
+
 TD3-Based Ensemble Reinforcement Learning for Financial Portfolio Optimisation. Created for masters dissertation, Department of Artificial Intelligence, Faculty of Information & Communication Technology University of Malta.
 Nigel Cuschieri, supervised by Vince Vella and Josef Bajada.
 
